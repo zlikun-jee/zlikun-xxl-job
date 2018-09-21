@@ -11,7 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 
 /**
- * 任务Handler示例（Bean模式）
+ * 任务Handler示例（Bean模式）<br>
+ * 注解里的任务执行器名称必须设置（应该可以用反射获取Bean的名称来自动设置吧，可以尝试改造一下~）
  *
  * @author zlikun
  * @date 2018-09-21 14:12
