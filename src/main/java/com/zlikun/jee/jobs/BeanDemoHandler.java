@@ -28,12 +28,25 @@ public class BeanDemoHandler extends IJobHandler {
         // 使用XxlJob提供的日志工具类打印的日志，可以在XXL-JOB管理端查看
         XxlJobLogger.log("XXL-JOB: 任务Handler示例（Bean模式）");
 
-        log.info("开始执行JobHandler，接收参数：{}", args);
+        // 模拟任务执行过程
+        try {
+            log.info("开始执行JobHandler，接收参数：{}", args);
 
-        // 休眠三秒，模拟执行过程
-        TimeUnit.SECONDS.sleep(3L);
+            XxlJobLogger.log("任务开始执行");
+            TimeUnit.SECONDS.sleep(15L);
+            XxlJobLogger.log("任务执行中");
+            TimeUnit.SECONDS.sleep(15L);
+            XxlJobLogger.log("任务执行结束");
 
-        log.info("结束执行JobHandler");
+            log.info("结束执行JobHandler");
+        } catch (Exception e) {
+            // 由于终止任务是通过“interrupt”线程抛出“InterruptedException”异常实现，所以不能在任务中把该异常处理掉了
+            // 这里把 InterruptedException 异常向上抛出，以免破坏终止功能
+            if (e instanceof InterruptedException) {
+                throw e;
+            }
+            log.error("任务执行出错!", e);
+        }
 
         return SUCCESS;
     }
