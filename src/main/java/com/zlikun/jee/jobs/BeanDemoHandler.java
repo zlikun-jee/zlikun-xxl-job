@@ -32,11 +32,16 @@ public class BeanDemoHandler extends IJobHandler {
         try {
             log.info("开始执行JobHandler，接收参数：{}", args);
 
-            XxlJobLogger.log("任务开始执行");
-            TimeUnit.SECONDS.sleep(15L);
-            XxlJobLogger.log("任务执行中");
-            TimeUnit.SECONDS.sleep(15L);
-            XxlJobLogger.log("任务执行结束");
+            // 任务参数为 interrupt 时表示测试 interrupt，否则简单输出即可
+            if (args != null && args.contains("interrupt")) {
+                XxlJobLogger.log("任务开始执行");
+                TimeUnit.SECONDS.sleep(15L);
+                XxlJobLogger.log("任务执行中");
+                TimeUnit.SECONDS.sleep(15L);
+                XxlJobLogger.log("任务执行结束");
+            } else {
+                XxlJobLogger.log("任务执行结束");
+            }
 
             log.info("结束执行JobHandler");
         } catch (Exception e) {
