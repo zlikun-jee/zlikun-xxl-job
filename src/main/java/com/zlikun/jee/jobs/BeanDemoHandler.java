@@ -5,10 +5,8 @@ import com.xxl.job.core.handler.IJobHandler;
 import com.xxl.job.core.handler.annotation.JobHandler;
 import com.xxl.job.core.log.XxlJobLogger;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
-
 
 /**
  * 任务Handler示例（Bean模式）<br>
@@ -18,7 +16,6 @@ import java.util.concurrent.TimeUnit;
  * @date 2018-09-21 14:12
  */
 @Slf4j
-@Component
 @JobHandler("BeanDemoHandler")
 public class BeanDemoHandler extends IJobHandler {
 
@@ -57,3 +54,4 @@ public class BeanDemoHandler extends IJobHandler {
     }
 
 }
+

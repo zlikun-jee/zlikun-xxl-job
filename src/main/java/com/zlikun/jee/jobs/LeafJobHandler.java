@@ -5,7 +5,6 @@ import com.xxl.job.core.handler.IJobHandler;
 import com.xxl.job.core.handler.annotation.JobHandler;
 import com.xxl.job.core.log.XxlJobLogger;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 /**
  * 子任务，测试时针对该任务配置两个任务（使用不同的参数）<br>
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Component;
  * @date 2018-09-21 15:18
  */
 @Slf4j
-@Component
 @JobHandler("LeafJobHandler")
 public class LeafJobHandler extends IJobHandler {
 
